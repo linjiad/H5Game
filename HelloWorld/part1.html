@@ -1,0 +1,50 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>Making your first Phaser 3 Game - Part 1</title>
+    <script src="./assets/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+    // 游戏的配置
+    var config = {
+        type: Phaser.AUTO, // 配置游戏的渲染器（可以是Phaser.CANVAS，或者Phaser.WEBGL或者Phaser.AUTO自动）
+        width: 800, // 游戏宽
+        height: 600,// 游戏高
+        scene: { // 场景（游戏需要哪些场景）
+            preload: preload, // 预加载，一般加载些游戏资源图片
+            create: create, // 游戏载入时触发
+            update: update // 一直在监听游戏
+        }
+    };
+    //创建一个游戏对象
+    var game = new Phaser.Game(config);
+    // 一般放入要加载进来的资源
+    function preload ()
+    {
+        // 调用Phaser的Loader（加载器）
+        // Phaser启动时会自动找到这个函数，并加载里面定义好的所有资源。
+        console.log("我是预加载")
+    }
+    // 一般放初始化的游戏设置
+    function create ()
+    {
+        console.log("我加载了")
+    }
+    // 放整个游戏过程中的事件
+    function update ()
+    {
+        console.log("我改变了")
+    }
+
+</script>
+
+</body>
+</html>

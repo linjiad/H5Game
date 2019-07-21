@@ -1,0 +1,52 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>Making your first Phaser 3 Game - Part 2</title>
+    <script src="./assets/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    var config = {
+        type: Phaser.AUTO,
+        width: 800,
+        height: 600,
+        scene: {
+            preload: preload,
+            create: create,
+            update: update
+        }
+    };
+
+    var game = new Phaser.Game(config);
+
+    function preload ()
+    {
+        // 调用Phaser的Loader（加载器）
+        // Phaser启动时会自动找到这个函数，并加载里面定义好的所有资源。
+        this.load.image('sky', 'assets/sky.png'); // 加载背景图片
+        this.load.image('ground', 'assets/platform.png'); // 加载地面图片
+        this.load.image('star', 'assets/star.png');// 加载星星图片
+        this.load.image('bomb', 'assets/bomb.png');// 加载炸弹图片
+        this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 }); // 加载小人图片
+    }
+
+    function create ()
+    {
+    }
+
+    function update ()
+    {
+    }
+
+</script>
+
+</body>
+</html>

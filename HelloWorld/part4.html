@@ -1,0 +1,72 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>Making your first Phaser 3 Game - Part 4</title>
+    <script src="./assets/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    var config = {
+        type: Phaser.AUTO,
+        width: 800,
+        height: 600,
+        physics: { // 添加游戏引擎
+            default: 'arcade', // 引擎是物理引擎
+            arcade: {
+                gravity: { y: 300 }, // 重力
+                debug: false
+            }
+        },
+        scene: {
+            preload: preload,
+            create: create,
+            update: update
+        }
+    };
+
+    var platforms;
+
+    var game = new Phaser.Game(config);
+
+    function preload ()
+    {
+        this.load.image('sky', 'assets/sky.png');
+        this.load.image('ground', 'assets/platform.png');
+        this.load.image('star', 'assets/star.png');
+        this.load.image('bomb', 'assets/bomb.png');
+        this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
+    }
+
+    var platforms;
+
+    function create ()
+    {
+        this.add.image(400, 300, 'sky');
+        // 在Arcade物理系统中，有动态的和静态的两类物体（body）。
+        // 动态物体可以通过外力比如速度（velocity）、加速度（acceleration），得以四处移动。
+        // 它可以跟其他对象发生反弹（bounce）、碰撞（collide），此类碰撞受物体质量和其他因素影响。
+        platforms = this.physics.add.staticGroup(); // 生成一个静态物理组（Group），一般静态组都作为场景
+        // 给静态物理组添加东西（添加地面和断层）
+        platforms.create(400, 568, 'ground').setScale(2).refreshBody(); // setScale（2）是放大2倍的意思，refreshBody()把所作变动告诉物理世界
+        // platforms.create(game.config.width,game.config.height-64,'ground');
+        platforms.create(600, 400, 'ground');
+        platforms.create(50, 250, 'ground');
+        platforms.create(750, 220, 'ground');
+    }
+
+    function update ()
+    {
+    }
+
+</script>
+
+</body>
+</html>
