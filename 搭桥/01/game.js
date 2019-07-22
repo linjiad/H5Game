@@ -300,15 +300,16 @@ class playGame extends Phaser.Scene{
                 // 添加监听事件
                 this.time.addEvent({
                     // 两秒后执行
-                    delay: 5000,
+                    delay: 2000,
                     // 绑定this
                     callbackScope: this,
                     // 回调函数
                     callback: function(){
-                        // 重置分数
+                        /*// 重置分数
                         score = 0;
                         // 重新开始游戏
-                        this.scene.start("PlayGame1");
+                        this.scene.start("PlayGame1");*/
+                        document.getElementById("button").style.display="";
                     }
                 })
             }
